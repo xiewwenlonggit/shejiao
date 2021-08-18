@@ -1,0 +1,14 @@
+com/shejiao/MainActivity.java
+ com.shejiao.MainActivity
+com/shejiao/ReactNativeFlipper.java
+ com.shejiao.ReactNativeFlipper
+ com.shejiao.ReactNativeFlipper$1
+ com.shejiao.ReactNativeFlipper$2
+ com.shejiao.ReactNativeFlipper$2$1
+com/shejiao/BuildConfig.java
+ com.shejiao.BuildConfig
+com/shejiao/MainApplication.java
+ com.shejiao.MainApplication
+ com.shejiao.MainApplication$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList

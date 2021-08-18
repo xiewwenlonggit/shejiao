@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "E:\\rn\\shejiao\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh\\values-zh.xml",
+            "map": [
+                {
+                    "source": "E:\\rn\\shejiao\\node_modules\\jpush-react-native\\android\\build\\intermediates\\packaged_res\\debug\\values-zh\\values-zh.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,112,166,220",
+                        "endColumns": "56,53,53,53",
+                        "endOffsets": "107,161,215,269"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\xiewenlong\\.gradle\\caches\\transforms-2\\files-2.1\\99c6ff58ff6c83738ffbf8a18655305e\\jetified-ucrop-2.2.6-native\\res\\values-zh\\values-zh.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,109,163",
+                        "endColumns": "53,53,46",
+                        "endOffsets": "104,158,205"
+                    },
+                    "to": {
+                        "startLines": "6,7,8",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "274,328,382",
+                        "endColumns": "53,53,46",
+                        "endOffsets": "323,377,424"
+                    }
+                }
+            ]
+        }
+    ]
+}
