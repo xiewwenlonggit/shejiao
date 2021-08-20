@@ -1,5 +1,5 @@
 // util.js
-import { Dimensions } from 'react-native';
+import {Dimensions} from 'react-native';
 
 // 设备宽度，单位 dp
 const deviceWidthDp = Dimensions.get('window').width;

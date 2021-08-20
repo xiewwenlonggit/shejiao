@@ -1,12 +1,11 @@
-import React, { lazy, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux'
-import { useToast, Flex } from "native-base";
-import { ActivityIndicator } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import Login from '../view/login';
 import Demo from '../view/demo';
-import UserInfo from '../view/user'
+import UserInfo from '../view/user';
+import Home from '../view/home';
+import {useSelector} from 'react-redux';
 // import UserInfo from "./pages/account/userinfo";
 // import Tabbar from "./tabbar";
 // import TanHua from "./pages/friend/tanhua";
@@ -30,39 +29,20 @@ const Stack = createStackNavigator();
 // @inject('RootStore')
 // @observer
 const Nav = () => {
-  const Toast = useToast();
-  const storeInfos = useSelector(state => state.loading);
-  const toastId = useRef();
-  useEffect(() => {
-    if (storeInfos) {
-      toastId.current = Toast.show({
-        render: () => {
-          return (
-            <Flex flex={1} justify="center" align='center' style={{ backgroundColor: "#000" }} w={20} h={20} >
-              <ActivityIndicator size="large" color="white" />
-            </Flex>
-          )
-        },
-        placement: 'top',
-        duration: 30000
-      },
-
-
-      );
-    } else {
-      Toast.close(toastId.current);
-    }
-  }, [storeInfos])
+  const {token} = useSelector(store => store.user);
+  const initName = token ? 'Home' : 'Login';
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none" initialRouteName={UserInfo}>
-        <Stack.Screen name="UserInfo" component={UserInfo} />
+      <Stack.Navigator headerMode="Home" initialRouteName={initName}>
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="UserInfo" component={UserInfo} />
+        <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Demo" component={Demo} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
+
 // class Nav extends React.Component {
 //   //   constructor(props) {
 //   //     super(props);

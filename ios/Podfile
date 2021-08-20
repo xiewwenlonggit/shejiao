@@ -12,6 +12,14 @@ target 'shejiao' do
     :hermes_enabled => false
   )
 
+  pod 'react-native-amap-geolocation', :path => '../node_modules/react-native-amap-geolocation'
+
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
+  pod 'JPush', :path => '../node_modules/jpush-react-native'
+
+  pod 'JCore', :path => '../node_modules/jcore-react-native'
+
   target 'shejiaoTests' do
     inherit! :complete
     # Pods for testing
