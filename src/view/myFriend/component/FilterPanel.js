@@ -6,7 +6,6 @@ import pxToDp from '../../../utils/PixelRatio';
 import {TouchableOpacity} from 'react-native';
 import SvgUri from 'react-native-svg-uri';
 import {male, female} from '../../../res/fonts/iconSvg';
-import {fontSize} from 'styled-system';
 const FilterPanel = () => {
   const [gender, setGender] = useState('');
   return (
