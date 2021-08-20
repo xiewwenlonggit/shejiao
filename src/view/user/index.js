@@ -112,22 +112,35 @@ const USer = props => {
     if (res1.code !== '10000') {
       return Toast.show({title: '完善个人信息失败'});
     }
-    const {
-      user: {id, phoneNumber},
-    } = reduxData;
-    await jgBusiness(id, phoneNumber);
-    setIsvisiable(false);
-    Toast.show({
-      description: '恭喜操作成功！',
-      status: 'success',
-      duration: 2000,
-    });
-    setTimeout(() => {
+    if (res1.code === '898001') {
       props.navigation.reset({
         routes: [{name: 'Home'}],
       });
-      // 准备跳转
-    }, 2000);
+    }
+    const {
+      user: {id, phoneNumber},
+    } = reduxData;
+    try {
+      await jgBusiness(id, phoneNumber);
+      setIsvisiable(false);
+      Toast.show({
+        description: '恭喜操作成功！',
+        status: 'success',
+        duration: 2000,
+      });
+      setTimeout(() => {
+        props.navigation.reset({
+          routes: [{name: 'Home'}],
+        });
+        // 准备跳转
+      }, 2000);
+    } catch (error) {
+      if (error.code === '89001') {
+        props.navigation.reset({
+          routes: [{name: 'Home'}],
+        });
+      }
+    }
   };
   const uploadHeadImg = img => {
     let formData = new FormData();

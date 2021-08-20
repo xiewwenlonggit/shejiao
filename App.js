@@ -7,6 +7,7 @@ import {Provider} from 'react-redux';
 import {NativeBaseProvider} from 'native-base';
 import Geo from './src/utils/Geo';
 import UseWrap from './src/wrap';
+import pxToDp from './src/utils/PixelRatio';
 const App = () => {
   const [isInitGeo, setIsInitGeo] = useState(false);
   useEffect(() => {
@@ -18,7 +19,7 @@ const App = () => {
   }, []);
   return (
     <NativeBaseProvider>
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, width: pxToDp(375)}}>
         <Provider store={Store}>
           <UseWrap>{isInitGeo ? <Nav /> : null}</UseWrap>
         </Provider>

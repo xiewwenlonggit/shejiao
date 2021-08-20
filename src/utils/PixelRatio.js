@@ -3,7 +3,6 @@ import {Dimensions} from 'react-native';
 
 // 设备宽度，单位 dp
 const deviceWidthDp = Dimensions.get('window').width;
-
 // 设计稿宽度（这里为640px），单位 px
 const uiWidthPx = 375;
 

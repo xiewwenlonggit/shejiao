@@ -21,8 +21,7 @@ const FriendHead = () => {
       <View
         style={{
           flexDirection: 'row',
-          width: '80%',
-
+          width: '90%',
           justifyContent: 'space-around',
           alignItems: 'center',
         }}>
