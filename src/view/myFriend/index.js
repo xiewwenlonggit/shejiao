@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useEffect, useState} from 'react';
-import {View, Text, StatusBar, Image, StyleSheet} from 'react-native';
+import React, {useEffect, useState, useCallback} from 'react';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {ImageHeaderScrollView} from 'react-native-image-header-scroll-view';
 import pxToDp from '../../utils/PixelRatio';
 import FriendHead from './component/FrientHead';
@@ -8,9 +8,9 @@ import Visitors from './component/Visitors';
 import IconFont from '../../public/IconFont';
 import {get} from '../../api';
 import {FRIENDS_RECOMMEND, BASE_URI} from '../../api/pathMap';
-import {TouchableOpacity} from 'react-native';
 import {Overlay} from 'react-native-elements';
 import FilterPanel from './component/FilterPanel';
+import PerfectGirl from './component/PerfectGirl';
 const MyFriend = () => {
   // 接口要的数据
   const params = {
@@ -22,11 +22,14 @@ const MyFriend = () => {
     city: '',
     education: '',
   };
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   // 字体图标点击
-  const recommendFilterShow = () => {};
+  const recommendFilterShow = () => {
+    setIsVisible(true);
+  };
   // 推荐朋友 数组
   const [recommends, setRecommends] = useState([]);
+
   useEffect(() => {
     async function getRecommends(filterParams = {}) {
       const res = await get(FRIENDS_RECOMMEND, {
@@ -37,6 +40,17 @@ const MyFriend = () => {
     }
     getRecommends();
   }, []);
+  const close = useCallback(() => {
+    setIsVisible(false);
+  }, [setIsVisible]);
+
+  const submit = async (filterParams = {}) => {
+    const res = await get(FRIENDS_RECOMMEND, {
+      ...params,
+      ...filterParams,
+    });
+    res.data;
+  };
   return (
     <View style={{flex: 1}}>
       <ImageHeaderScrollView
@@ -62,8 +76,9 @@ const MyFriend = () => {
               marginTop: pxToDp(4),
               height: pxToDp(3),
               backgroundColor: '#ccc',
-            }}
-          />
+            }}>
+            <PerfectGirl />
+          </View>
           {/* 推荐朋友sta */}
           <View>
             <View style={Styles.tuijian}>
@@ -80,65 +95,71 @@ const MyFriend = () => {
           {/* 推荐朋友end */}
           {/* 列表内容sta */}
           <View>
-            {recommends.map((v, i) => (
-              <TouchableOpacity key={i} style={Styles.recommends}>
-                <View
-                  style={{paddingLeft: pxToDp(15), paddingRight: pxToDp(15)}}>
-                  <Image
-                    style={{
-                      width: pxToDp(50),
-                      height: pxToDp(50),
-                      borderRadius: pxToDp(25),
-                    }}
-                    source={{
-                      uri: BASE_URI + v.header,
-                    }}
-                  />
-                </View>
-                {/* 名称 */}
-                <View style={{flex: 2, justifyContent: 'space-around'}}>
-                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                    <Text style={{color: '#555'}}>{v.nick_name}</Text>
-                    <IconFont
+            {recommends && recommends.length
+              ? recommends.map((v, i) => (
+                  <TouchableOpacity key={i} style={Styles.recommends}>
+                    <View
                       style={{
-                        fontSize: pxToDp(18),
-                        color: v.gender === '女' ? '#b564bf' : 'red',
-                      }}
-                      name={
-                        v.gender === '女' ? 'icontanhuanv' : 'icontanhuanan'
-                      }
-                    />
-                    <Text style={{color: '#555'}}>{v.age}岁</Text>
-                  </View>
-                  <View style={{flexDirection: 'row'}}>
-                    <Text style={Styles.infos}>{v.marry}</Text>
-                    <Text style={Styles.infos}>|</Text>
-                    <Text style={Styles.infos}>{v.xueli}</Text>
-                    <Text style={Styles.infos}>|</Text>
-                    <Text style={Styles.infos}>
-                      {v.agediff < 10 ? '年龄相仿' : '有点代沟'}
-                    </Text>
-                  </View>
-                </View>
-                {/* 缘分值 */}
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    width: pxToDp(100),
-                    justifyContent: 'center',
-                  }}>
-                  <IconFont
-                    name="iconxihuan"
-                    style={{
-                      color: 'red',
-                      fontSize: pxToDp(30),
-                    }}
-                  />
-                  <Text style={{color: '#666'}}>{v.fateValue}</Text>
-                </View>
-              </TouchableOpacity>
-            ))}
+                        paddingLeft: pxToDp(15),
+                        paddingRight: pxToDp(15),
+                      }}>
+                      <Image
+                        style={{
+                          width: pxToDp(50),
+                          height: pxToDp(50),
+                          borderRadius: pxToDp(25),
+                        }}
+                        source={{
+                          uri: BASE_URI + v.header,
+                        }}
+                      />
+                    </View>
+                    {/* 名称 */}
+                    <View style={{flex: 2, justifyContent: 'space-around'}}>
+                      <View
+                        style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <Text style={{color: '#555'}}>{v.nick_name}</Text>
+                        <IconFont
+                          style={{
+                            fontSize: pxToDp(18),
+                            color: v.gender === '女' ? '#b564bf' : 'red',
+                          }}
+                          name={
+                            v.gender === '女' ? 'icontanhuanv' : 'icontanhuanan'
+                          }
+                        />
+                        <Text style={{color: '#555'}}>{v.age}岁</Text>
+                      </View>
+                      <View style={{flexDirection: 'row'}}>
+                        <Text style={Styles.infos}>{v.marry}</Text>
+                        <Text style={Styles.infos}>|</Text>
+                        <Text style={Styles.infos}>{v.xueli}</Text>
+                        <Text style={Styles.infos}>|</Text>
+                        <Text style={Styles.infos}>
+                          {v.agediff < 10 ? '年龄相仿' : '有点代沟'}
+                        </Text>
+                      </View>
+                    </View>
+                    {/* 缘分值 */}
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        width: pxToDp(100),
+                        justifyContent: 'center',
+                      }}>
+                      <IconFont
+                        name="iconxihuan"
+                        style={{
+                          color: 'red',
+                          fontSize: pxToDp(30),
+                        }}
+                      />
+                      <Text style={{color: '#666'}}>{v.fateValue}</Text>
+                    </View>
+                  </TouchableOpacity>
+                ))
+              : null}
           </View>
           {/* 列表内容end */}
         </View>
@@ -155,7 +176,7 @@ const MyFriend = () => {
           paddingRight: pxToDp(10),
         }}
         isVisible={isVisible}>
-        <FilterPanel />
+        <FilterPanel onClose={close} onSubmitFilter={submit} />
       </Overlay>
     </View>
   );
