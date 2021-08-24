@@ -11,6 +11,7 @@ import Login from '../view/login';
 import Demo from '../view/demo';
 import UserInfo from '../view/user';
 import Home from '../view/home';
+import TanHua from '../view/myFriend/tanhua';
 
 // import UserInfo from "./pages/account/userinfo";
 // import Tabbar from "./tabbar";
@@ -85,6 +86,7 @@ const Nav = () => {
         )}
         <Stack.Screen name="UserInfo" component={UserInfo} />
         <Stack.Screen name="Demo" component={Demo} />
+        <Stack.Screen name="TanHua" component={TanHua} />
       </Stack.Navigator>
     </NavigationContainer>
   );

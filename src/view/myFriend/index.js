@@ -76,9 +76,9 @@ const MyFriend = () => {
               marginTop: pxToDp(4),
               height: pxToDp(3),
               backgroundColor: '#ccc',
-            }}>
-            <PerfectGirl />
-          </View>
+            }}
+          />
+          <PerfectGirl />
           {/* 推荐朋友sta */}
           <View>
             <View style={Styles.tuijian}>

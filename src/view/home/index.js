@@ -13,7 +13,7 @@ import {
   my,
   selectedMy,
 } from '../../res/fonts/iconSvg';
-import Friend from '../myFriend/index.js';
+import Friend from '../myFriend';
 import Group from './pages/Group';
 import Message from './pages/Message';
 import My from './pages/My';
