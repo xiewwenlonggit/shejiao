@@ -11,7 +11,9 @@ import {FRIENDS_RECOMMEND, BASE_URI} from '../../api/pathMap';
 import {Overlay} from 'react-native-elements';
 import FilterPanel from './component/FilterPanel';
 import PerfectGirl from './component/PerfectGirl';
+import {useNavigation} from '@react-navigation/core';
 const MyFriend = () => {
+  const navigation = useNavigation();
   // 接口要的数据
   const params = {
     page: 1,
@@ -97,7 +99,10 @@ const MyFriend = () => {
           <View>
             {recommends && recommends.length
               ? recommends.map((v, i) => (
-                  <TouchableOpacity key={i} style={Styles.recommends}>
+                  <TouchableOpacity
+                    key={i}
+                    style={Styles.recommends}
+                    onPress={() => navigation.navigate('Detail', {id: v.id})}>
                     <View
                       style={{
                         paddingLeft: pxToDp(15),

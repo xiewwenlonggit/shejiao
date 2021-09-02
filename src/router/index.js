@@ -12,13 +12,12 @@ import Demo from '../view/demo';
 import UserInfo from '../view/user';
 import Home from '../view/home';
 import TanHua from '../view/myFriend/tanhua';
+import Search from '../view/myFriend/search';
+import TestSoul from '../view/myFriend/testSoul';
+import TestQA from '../view/myFriend/testSoul/testQA';
+import TestResult from '../view/myFriend/testSoul/testResult';
+import Detail from '../view/myFriend/detail';
 
-// import UserInfo from "./pages/account/userinfo";
-// import Tabbar from "./tabbar";
-// import TanHua from "./pages/friend/tanhua";
-// import Search from "./pages/friend/search";
-// import TestSoul from "./pages/friend/testSoul";
-// import TestQA from "./pages/friend/testSoul/testQA";
 // import TestResult from "./pages/friend/testSoul/testResult";
 // import Detail from "./pages/friend/detail";
 // import Chat from "./pages/message/chat";
@@ -87,6 +86,11 @@ const Nav = () => {
         <Stack.Screen name="UserInfo" component={UserInfo} />
         <Stack.Screen name="Demo" component={Demo} />
         <Stack.Screen name="TanHua" component={TanHua} />
+        <Stack.Screen name="Search" component={Search} />
+        <Stack.Screen name="TestSoul" component={TestSoul} />
+        <Stack.Screen name="TestQA" component={TestQA} />
+        <Stack.Screen name="TestResult" component={TestResult} />
+        <Stack.Screen name="Detail" component={Detail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

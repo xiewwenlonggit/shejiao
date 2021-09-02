@@ -16,6 +16,7 @@ const App = () => {
     }
     getLocation();
   }, []);
+
   return (
     <NativeBaseProvider>
       <View style={{flex: 1, width: pxToDp(375)}}>

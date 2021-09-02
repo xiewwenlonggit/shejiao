@@ -1,8 +1,8 @@
 /**
  * 接口基地址
  */
-export const BASE_URI = 'http://157.122.54.189:9089';
-
+// export const BASE_URI = 'http://157.122.54.189:9089';
+export const BASE_URI = 'http://localhost:3000';
 /**
  *  登录 获取验证码
  */
