@@ -17,7 +17,7 @@ import TestSoul from '../view/myFriend/testSoul';
 import TestQA from '../view/myFriend/testSoul/testQA';
 import TestResult from '../view/myFriend/testSoul/testResult';
 import Detail from '../view/myFriend/detail';
-
+import Chat from '../view/message/chat';
 // import TestResult from "./pages/friend/testSoul/testResult";
 // import Detail from "./pages/friend/detail";
 // import Chat from "./pages/message/chat";
@@ -91,6 +91,7 @@ const Nav = () => {
         <Stack.Screen name="TestQA" component={TestQA} />
         <Stack.Screen name="TestResult" component={TestResult} />
         <Stack.Screen name="Detail" component={Detail} />
+        <Stack.Screen name="Chat" component={Chat} />
       </Stack.Navigator>
     </NavigationContainer>
   );

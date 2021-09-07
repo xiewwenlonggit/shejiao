@@ -14,8 +14,8 @@ import {
   selectedMy,
 } from '../../res/fonts/iconSvg';
 import Friend from '../myFriend';
-import Group from './pages/Group';
-import Message from './pages/Message';
+import Group from '../group';
+import Message from '../message';
 import My from './pages/My';
 import {get} from '../../api';
 import {MY_INFO} from '../../api/pathMap';
@@ -24,13 +24,13 @@ import {setCustomerInfos} from '../../redux/actions/customer';
 import JMessage from '../../utils/JMessage';
 const Index = props => {
   const dispatch = useDispatch();
-  const [selectedTab, setSelectedTab] = useState('friend');
+  const [selectedTab, setSelectedTab] = useState('group');
   useEffect(() => {
-    let nowSelect = 'friend';
-    if (props.route.params && props.route.params.pagename) {
-      nowSelect = props.route.params.pagename;
-    }
-    setSelectedTab(nowSelect);
+    // let nowSelect = 'friend';
+    // if (props.route.params && props.route.params.pagename) {
+    //   nowSelect = props.route.params.pagename;
+    // }
+    // setSelectedTab(nowSelect);
   }, []);
   useEffect(() => {
     async function getUserInfos() {
